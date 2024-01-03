@@ -1,14 +1,14 @@
+import Signin from "./pages/signin";
 
 function App() {
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </div>
-     
+    <main className="flex flex-col items-center justify-center h-screen">
+      <Signin />
+    </main>
   )
+     
+    
 }
 
-export default App
+export default App;
