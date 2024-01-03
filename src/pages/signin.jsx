@@ -2,6 +2,8 @@ import Input from "../componentes/input";
 import Logo from "../assets/logo.png"
 import Button from "../componentes/button";
 
+import { Link } from "react-router-dom";
+
 const Signin = () => {
     return(
         <div className="flex flex-col items-center justify-around bg-zinc-900 rounded p-8 w-[35rem] h-[35rem]">
@@ -13,7 +15,7 @@ const Signin = () => {
                 <Button text="SIGNIN" type="submit"/>
             </form>
 
-            <p className="text-white text-2xl">Não tem conta? Resgistre-se</p>
+            <p className="text-white text-2xl">Não tem conta? <Link to="/signup" className="text-sky-400 hover:text-sky-600"> Resgistre-se </Link></p>
 
         </div>
     )   
