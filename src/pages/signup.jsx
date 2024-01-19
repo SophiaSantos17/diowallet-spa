@@ -6,8 +6,9 @@ import {signupSchema} from "../schemas/signupSchema.js";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import { signup } from "../services/signup.js";
+import { signup } from "../services/user.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Signup = () => {
 
@@ -18,6 +19,7 @@ const Signup = () => {
     } = useForm({resolver: zodResolver(signupSchema)});
 
     const navigate = useNavigate();
+    const [apiErrors, setApiErrors] = useState("");
 
     async function handleSubmitForm(data){
         try{
@@ -25,7 +27,7 @@ const Signup = () => {
             navigate("/signin");
         }catch(error){
             console.log(error);
-            
+            setApiErrors(error.message);
         }
     }
 
@@ -33,6 +35,7 @@ const Signup = () => {
     return(
         <div className="flex flex-col items-center justify-around bg-zinc-900 rounded p-8 w-[35rem] h-[35rem] relative">
             <img src={Logo} alt="Logo DioWallet" className="w-44"/>
+            {apiErrors && <ErrorInput text={apiErrors} />}
             <form onSubmit={handleSubmit(handleSubmitForm)} className="flex flex-col justify-center gap-4 w-full text-2xl">
                 <Input 
                     type="text" 

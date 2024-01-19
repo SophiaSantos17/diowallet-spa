@@ -1,13 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom/client';
 import Signin from './pages/signin.jsx';
 import Signup from './pages/signup.jsx';
+import Home  from './pages/home.jsx';
+import NewTransaction from './pages/newTransaction.jsx';
+import ErrorPage from './pages/errorPage.jsx';
+import UserPage from './pages/userPage.jsx';
+import EditTransaction from './pages/editTransaction.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage/>
+  },
   {
     path: "/signin",
     element: <Signin/>,
@@ -15,6 +23,18 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup/>,
+  },
+  {
+    path: "/transaction/:type",
+    element: <NewTransaction/>,
+  },
+  {
+    path: "/user/:id",
+    element: <UserPage/>,
+  },
+  {
+    path: "/editTransaction/:id",
+    element: <EditTransaction/>,
   },
 ]);
 
